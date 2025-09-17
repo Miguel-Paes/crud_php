@@ -1,9 +1,11 @@
 <?php
 require "bd.php";
 
+header("Cache-control: no-store, no-cache, must-revalidate, max-age=0"); //Desabilita o login automático
+header("Pragma: no-cache"); //Desabilita o login automático (para PCs antigos)
+
 /*
 echo "<pre>";
-print_r($conn);
 var_dump($conn);
 echo "</pre>";
 */
@@ -82,12 +84,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 <body>
     <h2>Login - Professores</h2>
-    <form method="post">
+    <form method="post" autocomplete="off">
         <label for="email">E-mail</label>
-        <input type="email" name="email" required>
+        <input type="email" name="email" autocomplete="off" required>
 
         <label for="senha">Senha</label>
-        <input type="password" name="senha" required>
+        <input type="password" name="senha" autocomplete="new-password" required>
 
         <button type="submit">Entrar</button>
         <?php if ($erro): ?>
